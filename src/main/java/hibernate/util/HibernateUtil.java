@@ -3,7 +3,12 @@ package hibernate.util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 
 public class HibernateUtil {
     //singelton najprostszy wzorzec
@@ -27,29 +32,30 @@ public class HibernateUtil {
             transaction.commit();
             session.close();
         } catch (PersistenceException e) {
-            System.out.println("Could not unwrap session : " +e );
+            System.out.println("Could not unwrap session : " + e);
         }
     }
+
     //jpa
-    public void save(Object o){
+    public void save(Object o) {
         entityManager.getTransaction().begin();
-        if(!entityManager.contains(o)){
+        if (!entityManager.contains(o)) {
             entityManager.persist(o);
             entityManager.flush();
         }
         entityManager.getTransaction().commit();
     }
-    public void delete(Class clazz, Long id){
+
+    public void delete(Class clazz, Long id) {
         entityManager.getTransaction().begin();
         Object toRemove = entityManager.find(clazz, id);
         entityManager.remove(toRemove);
         entityManager.getTransaction().commit();
     }
 
-    public EntityManager getEntityManager(){
+    public EntityManager getEntityManager() {
         return entityManager;
     }
-
 
 
 }

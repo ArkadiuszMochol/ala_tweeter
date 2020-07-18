@@ -14,7 +14,6 @@ public interface UserDao {
     AppUser getUserByEmail(String email);
     AppUser getUserByLogin(String login);
     HashSet<AppUser> getUserByName(String name);
-    boolean isUserValid(String login, String password);
 
     HashSet<AppUser> getFollowedUsers(String login);
 
