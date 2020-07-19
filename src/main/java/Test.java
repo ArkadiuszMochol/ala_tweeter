@@ -40,11 +40,17 @@ public class Test {
         userDao.follow("Jan", "Erni");
         AppUser erni = userDao.getUserByLogin("Erni");
         Set<AppUser> followers = erni.getFollowers();
-        AppUser erni1=userDao.getUserByLogin("Erni");
+        AppUser erni1 = userDao.getUserByLogin("Erni");
         HashSet<AppUser> followers1 = userDao.getFollowers(erni1.getLogin());
 
         System.out.println(followers.size());
         userDao.saveUser(erni1);
-
+    }
+    public static void returnTest(){
+        if(true){
+            System.out.println("In if");
+            return;
+        }
+        System.out.println("outside");
     }
 }
