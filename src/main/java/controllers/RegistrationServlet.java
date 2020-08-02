@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static utils.ServletsUtils.*;
@@ -56,7 +55,6 @@ public class RegistrationServlet extends HttpServlet {
                     .name(req.getParameter(NAME))
                     .lastName(req.getParameter(LAST_NAME))
                     .password(req.getParameter(PASSWORD))
-                    .dateOfRegistration(new Date())
                     .build();
 
             service.saveUser(user);

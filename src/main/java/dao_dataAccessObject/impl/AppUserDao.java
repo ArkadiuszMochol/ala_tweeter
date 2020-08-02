@@ -13,7 +13,7 @@ import java.util.List;
 public class AppUserDao extends AbstractDao implements UserDao {
     @Override
     public HashSet<AppUser> getAll() {
-        TypedQuery<AppUser> selectAllQuery = entityManager.createQuery("select u from AppUser u", AppUser.class);
+        TypedQuery<AppUser> selectAllQuery = entityManager.createQuery("óselect u from AppUser u", AppUser.class);
         return new HashSet<>(selectAllQuery.getResultList());
     }
 

@@ -4,8 +4,6 @@ import model.AppUser;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Test {
 
@@ -37,17 +35,20 @@ public class Test {
         user3.setDateOfRegistration(new Date());
         userDao.saveUser(user3);
 
-        userDao.follow("Jan", "Erni");
-        AppUser erni = userDao.getUserByLogin("Erni");
-        Set<AppUser> followers = erni.getFollowers();
-        AppUser erni1 = userDao.getUserByLogin("Erni");
-        HashSet<AppUser> followers1 = userDao.getFollowers(erni1.getLogin());
-
+        userDao.follow(user1.getLogin(), user2.getLogin());
+        System.out.println(user1.getFollowedByUser());
+        HashSet<AppUser> followers = userDao.getFollowers(user2.getLogin());
         System.out.println(followers.size());
-        userDao.saveUser(erni1);
+        userDao.stopFollowing(user1.getLogin(), user2.getLogin());
+        System.out.println(user1.getFollowedByUser());
+        HashSet<AppUser> followers1 = userDao.getFollowers(user2.getLogin());
+        System.out.println(followers1.size());
+        returnTest();
+
     }
-    public static void returnTest(){
-        if(true){
+
+    public static void returnTest() {
+        if (true) {
             System.out.println("In if");
             return;
         }

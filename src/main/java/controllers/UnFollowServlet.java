@@ -31,10 +31,6 @@ public class UnFollowServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userLoginFromSession = ServletsUtils.getUserLoginFromSession(req);
-        if (userLoginFromSession == null) {
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
-            return;
-        }
         String userLoginToUnfollow = req.getParameter(USER_LOGIN_T0_UNFOLLOW);
         service.stopFollwing(userLoginFromSession, userLoginToUnfollow);
         req.getRequestDispatcher("users").forward(req, resp);

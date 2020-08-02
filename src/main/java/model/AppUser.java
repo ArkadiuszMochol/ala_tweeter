@@ -1,5 +1,7 @@
 package model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -22,6 +24,7 @@ public class AppUser {
     private String password;
     private String email;
     @Column(name = "date_of_registration")
+    @CreationTimestamp
     private Date dateOfRegistration;
 
     @ManyToMany(mappedBy = "followedByUser")
@@ -146,34 +149,41 @@ public class AppUser {
         private String mail;
         private Date dateOfRegistration;
 
-        public static UserBuilder getBuilder(){
+        public static UserBuilder getBuilder() {
             return new UserBuilder();
         }
-        public UserBuilder login(String login){
+
+        public UserBuilder login(String login) {
             this.login = login;
             return this;
         }
-        public UserBuilder name(String name){
+
+        public UserBuilder name(String name) {
             this.name = name;
             return this;
         }
-        public UserBuilder lastName(String lastName){
+
+        public UserBuilder lastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
-        public UserBuilder password(String password){
+
+        public UserBuilder password(String password) {
             this.password = password;
             return this;
         }
-        public UserBuilder mail(String mail){
+
+        public UserBuilder mail(String mail) {
             this.mail = mail;
             return this;
         }
-        public UserBuilder dateOfRegistration(Date dateOfRegistration){
+
+        public UserBuilder dateOfRegistration(Date dateOfRegistration) {
             this.dateOfRegistration = dateOfRegistration;
             return this;
         }
-        public AppUser build(){
+
+        public AppUser build() {
             AppUser user = new AppUser();
             user.setLogin(this.login);
             user.setName(this.name);

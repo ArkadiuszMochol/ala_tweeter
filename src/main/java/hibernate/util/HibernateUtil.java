@@ -4,8 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
@@ -13,8 +11,8 @@ import javax.persistence.PersistenceException;
 public class HibernateUtil {
     //singelton najprostszy wzorzec
     private static HibernateUtil instance;
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");                      //do komunikacji z DB
-    //
+    private final EntityManagerFactory entityManagerFactory =
+            Persistence.createEntityManagerFactory("myDatabase");                      //do komunikacji z DB
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     public static HibernateUtil getInstance() {
